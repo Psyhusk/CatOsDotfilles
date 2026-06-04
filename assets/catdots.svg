@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#1e1e2e" rx="20"/>
+  <!-- Cat ears -->
+  <polygon points="40,80 60,20 80,80" fill="#cba6f7"/>
+  <polygon points="120,80 140,20 160,80" fill="#cba6f7"/>
+  <!-- Cat face -->
+  <circle cx="100" cy="110" r="60" fill="#313244"/>
+  <!-- Eyes - glitch style -->
+  <ellipse cx="78" cy="100" rx="10" ry="12" fill="#f5c2e7"/>
+  <ellipse cx="122" cy="100" rx="10" ry="12" fill="#89dceb"/>
+  <!-- Pupils -->
+  <ellipse cx="78" cy="100" rx="5" ry="8" fill="#11111b"/>
+  <ellipse cx="122" cy="100" rx="5" ry="8" fill="#11111b"/>
+  <!-- Nose -->
+  <polygon points="100,112 95,120 105,120" fill="#f38ba8"/>
+  <!-- Whiskers -->
+  <line x1="40" y1="118" x2="90" y2="122" stroke="#6c7086" stroke-width="1.5"/>
+  <line x1="40" y1="126" x2="90" y2="126" stroke="#6c7086" stroke-width="1.5"/>
+  <line x1="110" y1="122" x2="160" y2="118" stroke="#6c7086" stroke-width="1.5"/>
+  <line x1="110" y1="126" x2="160" y2="126" stroke="#6c7086" stroke-width="1.5"/>
+  <!-- Glitch lines -->
+  <rect x="0" y="85" width="200" height="2" fill="#cba6f7" opacity="0.3"/>
+  <rect x="0" y="130" width="200" height="1" fill="#89dceb" opacity="0.4"/>
+</svg>
