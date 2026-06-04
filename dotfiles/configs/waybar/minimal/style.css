@@ -1,0 +1,208 @@
+@import '../colors.css';
+
+/* Colors - Mapped from Matugen */
+@define-color accent @primary;
+@define-color background @surface;
+@define-color background-alt @surface_container_high;
+@define-color border @outline;
+@define-color border-alt alpha(@outline, 0.63);
+@define-color text @on_surface;
+@define-color text-alt @on_primary;
+@define-color hover @primary;
+
+@define-color green @primary;
+@define-color yellow @tertiary;
+@define-color red @error;
+
+/* Color aliases for compatibility */
+@define-color color1 alpha(@primary, 0.7);
+@define-color color2 alpha(@secondary, 0.7);
+@define-color color3 alpha(@tertiary, 0.7);
+@define-color color4 alpha(@primary_fixed, 0.7);
+@define-color color5 alpha(@secondary_fixed, 0.7);
+@define-color color6 alpha(@surface_variant, 0.7);
+@define-color color7 alpha(@outline_variant, 0.7);
+@define-color color8 alpha(@primary_container, 0.7);
+@define-color color9 alpha(@tertiary_container, 0.7);
+
+/* General */
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: "JetBrainsMono Nerd Font", "JetBrainsMono";
+  font-weight: bold;
+  font-size: 12px;
+  min-height: 20px;
+  background: alpha(@surface, 0.5);
+}
+
+/* Tooltip */
+tooltip {
+  border: 1px solid @border;
+  background-color: @surface_container;
+}
+tooltip label {
+  color: @text;
+}
+
+/* Workspace */
+#workspaces {
+  padding: 2px;
+  margin: 0px 4px;
+  margin-left: 0px;
+  padding-left: 0px;
+}
+#workspaces button {
+  margin: 1px 2px;
+  background-color: transparent;
+  color: alpha(@text, 0.2);
+}
+#workspaces button.active {
+  color: @text;
+  min-width: 24px;
+}
+#workspaces button.urgent {
+  background-color: @error;
+}
+
+/* Weather */
+#custom-weather {
+  margin: 2px 4px;
+  padding: 0px 6px 0px 6px;
+  color: @text;
+  background: transparent;
+  border: none;
+}
+
+/* MPD */
+#custom-mediaplayer {
+  border: none;
+  background: transparent;
+  color: @text;
+}
+#custom-mediaplayer:hover {
+  color: @hover;
+}
+
+/* Updates */
+#custom-updates {
+  margin: 2px 4px;
+  padding: 0px 6px 0px 6px;
+  background: transparent;
+  color: @text;
+  border: none;
+}
+#custom-updates.green {
+  color: @text;
+}
+#custom-updates.yellow {
+  color: @yellow;
+}
+#custom-updates.red {
+  color: @error;
+}
+
+/* Audio */
+#pulseaudio {
+  margin: 2px 4px;
+  padding: 0px 6px 0px 6px;
+  background: transparent;
+  color: @text;
+  border: none;
+}
+#pulseaudio:hover {
+  color: @hover;
+}
+
+/* Backlight (brightness) */
+#backlight {
+  margin: 2px 4px;
+  padding: 0px 6px 0px 6px;
+  background: transparent;
+  color: @text;
+  border: none;
+}
+#backlight:hover {
+  color: @hover;
+}
+
+/* Battery */
+#battery {
+  margin: 2px 4px;
+  padding: 0px 6px 0px 6px;
+  background: transparent;
+  color: @text;
+  border: none;
+}
+#battery:hover {
+  color: @hover;
+}
+#battery.charging,
+#battery.plugged {
+  color: @green;
+}
+@keyframes blink {
+  to {
+    color: @error;
+  }
+}
+#battery.critical:not(.charging) {
+  color: @text;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+/* Tray */
+#tray {
+  margin: 2px 4px;
+  padding: 0px 6px 0px 6px;
+  background: transparent;
+  color: @text;
+  border: none;
+}
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+}
+#tray menu {
+  border-radius: 8px;
+  color: @text;
+  background-color: @surface_container;
+  padding: 4px;
+}
+
+/* Clock */
+#clock {
+  margin: 2px 4px;
+  padding: 0px 6px 0px 6px;
+  background: transparent;
+  color: @text;
+  border: none;
+}
+
+/* Notifications */
+#custom-notifications {
+  margin: 2px 4px;
+  padding: 0px 6px 0px 6px;
+  background: transparent;
+  color: @text;
+  border: none;
+}
+#custom-notifications:hover {
+  color: @hover;
+}
+
+/* Hide empty modules */
+#custom-updates.none,
+#tray.empty,
+#custom-mediaplayer.empty {
+  border: 0px;
+  background-color: transparent;
+  padding: 0px;
+  margin: 0px;
+}
