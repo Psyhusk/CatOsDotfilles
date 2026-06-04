@@ -1,0 +1,279 @@
+// Waybar Modules
+// By: Saifullah Balghari
+
+{
+  // Taskbar
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 18,
+    "spacing": 5,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close"
+  },
+
+  // System info
+  "custom/sysinfo": {
+    "format": "󰞘",
+    "tooltip-format": "System usage"
+  },
+  "cpu": {
+    "interval": 10,
+    "format": " {usage}%",
+    "max-length": 10
+  },
+  "memory": {
+    "interval": 10,
+    "format": " {}%",
+    "max-length": 10
+  },
+  "temperature": {
+    "thermal-zone": 0,
+    "critical-threshold": 80,
+    "format-critical": " {temperatureC}°C",
+    "format": " {temperatureC}°C"
+  },
+
+  // Active window name
+  "hyprland/window": {
+    "format": "{title}",
+    "max-length": 30,
+    "icon": true,
+    "icon-size": 14,
+    "separate-outputs": false
+  },
+
+  // mpd
+  "mpris": {
+    "format": "{player_icon} {dynamic}",
+    "tooltip-format": "{player_icon} {player} [{status}]\nTitle: {title}\nArtist: {artist}\n{position} / {length}",
+    "player-icons": {
+      "spotify": "",
+      "vlc": "󰕼",
+      "firefox": "",
+      "brave": "󰖟",
+      "chromium": "",
+      "default": "▶"
+    },
+
+    "status-icons": {
+      "playing": "▶",
+      "paused": "⏸",
+      "stopped": "⏹"
+    },
+
+    "dynamic-order": [
+      "title",
+      "artist",
+      "album"
+      // "position",
+      // "length"
+    ],
+
+    "dynamic-separator": " • ",
+    "dynamic-len": 50,
+    "dynamic-importance-order": [
+      "title",
+      "artist",
+      "album",
+      "position",
+      "length"
+    ],
+
+    "title-len": 30,
+    "artist-len": 20,
+    "album-len": 10,
+
+    "ellipsis": "…"
+  },
+
+  // Weather
+  "custom/weather": {
+    "return-type": "json",
+    "exec": "sbdots-actions get_weather_data",
+    "interval": 600, // 10 mins
+    "tooltip": true
+  },
+
+  // Workspaces
+  "hyprland/workspaces": {
+    "all-outputs": true,
+    "active-only": false,
+    "on-click": "activate",
+    "format": "{icon}",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "persistent-workspaces": {
+      "*": 3
+    }
+  },
+
+  // Locking system (hypridle)
+  "custom/hypridle": {
+    "format": "󱫔",
+    "return-type": "json",
+    "escape": true,
+    "exec-on-event": true,
+    "tooltip": true,
+    "interval": 60,
+    "exec": "sbdots-actions get_hypridle_status",
+    "on-click": "sbdots-actions toggle_hypridle"
+  },
+
+  // Updates
+  "custom/updates": {
+    "format": "{}",
+    "escape": true,
+    "return-type": "json",
+    "exec": "sbdots-actions get_available_updates",
+    "interval": 3600, // 1 hour
+    "tooltip": true,
+    "on-click": "kitty --class floating -e ~/.config/waybar/scripts/installupdates.sh"
+  },
+
+  // Brightness
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-alt": "{icon}",
+    "format-icons": ["󰃞", "󰃞", "󰃞", "󰃟", "󰃟", "󰃟", "󰃠", "󰃠", "󰃠"],
+    "scroll-step": 5,
+    "tooltip-format": "{percent}%",
+    "tooltip": true
+  },
+
+  // Battery
+  "battery": {
+    "bat": "BAT0",
+    "format": "{icon} {capacity}%",
+    "format-alt": "{icon}",
+    "format-charging": " {capacity}%",
+    "tooltip": true,
+    "format-plugged": " {capacity}%",
+    "states": {
+      "warning": 50,
+      "critical": 30
+    },
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+  },
+
+  // Bluetooth
+  "bluetooth": {
+    "format": " {status}",
+    "format-connected": " Connected",
+    "format-alt": "",
+    "format-disabled": "󰂲 Disabled",
+    "format-on": " On",
+    "format-connected-battery": " {device_battery_percentage}%",
+    "format-off": "󰂲 Off",
+    "on-click-right": "blueman-manager",
+    "format-no-controller": ""
+  },
+
+  // Audio
+  "pulseaudio": {
+    "scroll-step": 5,
+    "format": "{icon} {volume}%",
+    "format-alt": "{icon}",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-bluetooth-muted": " {icon}",
+    "format-muted": " ",
+    "format-source": "󰍬 {volume}%",
+    "format-source-muted": "󰍭",
+    "format-icons": {
+      "headphone": "󰋋",
+      "hands-free": "󱡏",
+      "headset": "󱡏",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    },
+    "on-click-right": "pavucontrol",
+    "tooltip-format": "{volume}% {format_source}"
+  },
+
+  // Network settings
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": "󱤚 {essid}",
+    "format-alt": "󱤚",
+    "format-ethernet": "  {ifname}",
+    "format-disconnected": "Disconnected",
+    "tooltip-format": " {ifname} via {gwaddri}",
+    "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+    "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 20,
+    "on-click-right": "kitty --class floating -e nmtui"
+  },
+
+  // System Tray
+  "tray": {
+    "icon-size": 15,
+    "spacing": 6,
+    "show-passive-items": true,
+  },
+
+  // Power Profiles Daemon
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
+  },
+
+  // Clock
+  "clock": {
+    "format": "<b>{:%I:%M %p}</b>",
+    "format-alt": "<b>{:%a.%d-%b}</b>",
+    // "format": "<b>{:%I:%M %p}</b>",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>"
+  },
+
+  // Notifications
+  "custom/notifications": {
+    "tooltip-format": "Notifications Center",
+    "format": "{icon}",
+    "format-icons": {
+      "none": "",
+      "inhibited-none": "",
+      "dnd-none": "",
+      "dnd-inhibited-none": "",
+      "notification": "",
+      "inhibited-notification": "",
+      "dnd-notification": "",
+      "dnd-inhibited-notification": ""
+    },
+    "return-type": "json",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "escape": true
+  },
+
+  // Power-menu
+  "custom/power": {
+    "format": "",
+    "on-click": "wlogout",
+    "tooltip-format": "Power Menu"
+  },
+
+  // System info drawer
+  "group/sysinfo": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 300,
+      "transition-left-to-right": true,
+      "click-to-reveal": true
+    },
+    "modules": [
+      "custom/sysinfo",
+      "cpu",
+      "memory",
+      "temperature"
+    ]
+  }
+}
