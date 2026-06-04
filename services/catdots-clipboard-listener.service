@@ -1,0 +1,21 @@
+[Unit]
+Description=CatOsDotfilles Clipboard Listener
+After=graphical.target
+Wants=graphical.target
+
+[Service]
+Type=simple
+
+ExecStart=/usr/bin/python -m catdots.daemons.cliplistener
+
+Restart=always
+RestartSec=1
+
+StandardOutput=journal
+StandardError=journal
+
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target
