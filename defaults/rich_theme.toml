@@ -1,0 +1,10 @@
+[styles]
+# CatOsDotfilles – Catppuccin Mocha dark palette
+info = "bold #89dceb"
+warning = "bold #f9e2af"
+error = "bold #f38ba8"
+success = "bold #a6e3a1"
+header = "bold #cba6f7"
+subtext = "#6c7086"
+spinner = "#89b4fa"
+highlight = "#f5c2e7"
