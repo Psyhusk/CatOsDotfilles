@@ -1,0 +1,437 @@
+@import '../colors.css';
+
+@define-color accent @primary;
+@define-color accent_color @primary;
+@define-color theme_bg_color @surface;
+@define-color theme_fg_color @on_surface;
+@define-color accent_bg_color @primary;
+@define-color theme_selected_fg_color @on_primary;
+@define-color success_color @primary;
+@define-color warning_color @tertiary;
+@define-color error_color @error;
+
+@define-color border alpha(@outline, 0.63);
+@define-color border-alt alpha(@outline, 0.63);
+@define-color text @on_surface;
+@define-color text-alt @on_primary;
+@define-color hover alpha(@primary, 0.7);
+
+/*================================================================
+=> General
+================================================================*/
+*{
+  margin:0;
+  padding:0px;
+  background: transparent;
+  font-family:"JetBrainsMono Nerd Font","JetBrainsMono";
+  font-weight:bold;
+  font-size:12px;
+  min-height: 15px;
+}
+
+/*================================================================
+=> Tooltip
+================================================================*/
+tooltip {
+    background: @surface_container;
+    color: @text;
+    border-radius: 8px;
+    border: 1px solid @border;
+}
+
+tooltip * {
+    background: transparent;
+    color: @text;
+}
+
+/*================================================================
+=> Shared modules
+================================================================*/
+#custom-menu,
+#workspaces,
+#window,
+#custom-mediaplayer,
+#custom-weather,
+#clock,
+#custom-notifications,
+#custom-power{
+  margin:2px 4px;
+  border-radius:6px;
+  background: @surface_container;
+  color:@text;
+}
+
+#custom-menu,
+#workspaces,
+#custom-weather,
+#clock,
+#custom-notifications,
+#custom-power{
+  border:1px solid @border;
+}
+
+#window,
+#custom-mediaplayer,
+#pulseaudio,
+#backlight,
+#bluetooth,
+#battery,
+#network,
+#custom-sysinfo,
+#power-profiles-daemon,
+#custom-hypridle,
+#cpu,
+#memory,
+#temperature{
+  border:1px solid alpha(@border,0.33);
+  background: @surface_container;
+  color:@text;
+}
+
+#custom-sysinfo:hover,
+#custom-hypridle:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#custom-menu:hover,
+#custom-mediaplayer:hover,
+#custom-notifications:hover,
+#custom-power:hover{
+  color:@hover;
+}
+
+#pulseaudio:hover,
+#backlight:hover,
+#bluetooth:hover,
+#battery:hover,
+#network:hover{
+  color: shade(@hover, 1.25);
+}
+
+/*================================================================
+=> Tools menu
+================================================================*/
+#custom-sysinfo,
+#power-profiles-daemon,
+#custom-hypridle,
+#cpu,
+#memory,
+#temperature{
+  margin:2px 0px;
+  font-size:13px;
+  padding:0px 8px;
+}
+
+#cpu,
+#memory,
+#temperature{
+  font-size:11px;
+  font-weight:bolder;
+}
+
+#power-profiles-daemon{padding:0px 12px 0px 6px;}
+
+#custom-sysinfo{
+  margin-left:4px;
+  border-radius:6px 0px 0px 6px;
+}
+
+#custom-hypridle{
+  padding-right:10px;
+  margin-right:4px;
+  border-radius:0px 6px 6px 0px;
+}
+
+#power-profiles-daemon.balanced{color:@text;}
+#power-profiles-daemon.performance{color:@error;}
+#power-profiles-daemon.power-saver{color:@primary;}
+#custom-hypridle.notactive{color:@error;}
+
+/*================================================================
+=> Workspaces
+================================================================*/
+#workspaces{padding:1px; margin-left:0px;}
+
+#workspaces button{
+  min-width:20px;
+  box-shadow:none;
+  margin:2px 3px;
+  text-shadow:none;
+  border:none;
+  border-radius:3px;
+  background:alpha(@text,0.1);
+  color:alpha(@text,0.5);
+  transition:all 0.1s linear;
+}
+
+#workspaces button.active{
+  min-width:28px;
+  transition:all 0.1s linear;
+  color:@surface;
+  background:@text;
+}
+
+#workspaces button:hover{
+  background:alpha(@text,0.2);
+  border:none;
+}
+
+#workspaces button.urgent{background-color:@error;}
+
+/*===============================================================
+=> Taskbar
+================================================================*/
+#taskbar{
+  margin:3px 4px;
+  padding:0px;
+  background:transparent;
+  border:none;
+  font-size:15px;
+  font-weight:bolder;
+}
+
+#taskbar button{
+  padding:0px 3px;
+  margin-right:2px;
+  border-radius:6px;
+  border:none;
+}
+
+#taskbar button:hover{background:@hover;}
+#taskbar button.active{background:alpha(@hover,0.3);}
+
+/*===============================================================
+=> Active Window
+================================================================*/
+#window{padding:0px 8px;}
+
+/*===============================================================
+=> MPD
+================================================================*/
+#custom-mediaplayer{padding:0px 8px;}
+
+/*===============================================================
+=> Updates
+================================================================*/
+#custom-updates{
+  margin:2px 4px;
+  border-radius:6px;
+  padding:1px 10px 0px 8px;
+  background: @surface_container;
+  border:none;
+}
+
+#custom-updates.green{
+  background:@text;
+  color:@surface;
+}
+
+#custom-updates.yellow{
+  background:@tertiary;
+  color:@surface;
+}
+
+#custom-updates.red{
+  background:@error;
+  color:@surface;
+}
+
+/*================================================================
+=> Weather
+================================================================*/
+#custom-weather{padding:0px 9px 0px 8px;}
+
+/*===============================================================
+=> Pulse Audio
+================================================================*/
+#pulseaudio{
+  margin:2px 0px 2px 4px;
+  padding:0px 8px;
+  border-radius:6px 0px 0px 6px;
+  border-right:none;
+}
+
+/*===============================================================
+=> Backlight (brightness)
+================================================================*/
+#backlight{
+  margin:2px 0px;
+  border-radius:0px;
+  border-right:none;
+  border-left:none;
+  padding:0px 12px 0px 8px;
+}
+
+/*================================================================
+=> Bluetooth
+================================================================*/
+#bluetooth{
+  margin:2px 0px;
+  padding:0px 8px 0px 4px;
+  border-radius:0px;
+  border-right:none;
+  border-left:none;
+}
+
+/*===============================================================
+=> Battery
+================================================================*/
+#battery{
+  margin:2px 0px;
+  padding:0px 8px 0px 4px;
+  border-radius:0px;
+  border-right:none;
+  border-left:none;
+}
+
+#battery.charging,
+#battery.plugged{color:@primary;}
+
+@keyframes blink{
+  to{color:@error;}
+}
+
+#battery.critical:not(.charging){
+  color:alpha(@primary, 0.5);
+  animation-name:blink;
+  animation-duration:0.5s;
+  animation-timing-function:linear;
+  animation-iteration-count:infinite;
+  animation-direction:alternate;
+}
+
+/*===============================================================
+=> Network
+================================================================*/
+#network{
+  margin:2px 4px 2px 0px;
+  padding:0px 12px 0px 6px;
+  border-radius:0px 6px 6px 0px;
+  border-left:none;
+}
+
+/*===============================================================
+=> Tray
+================================================================*/
+#tray{
+  margin:3px 2px;
+  border-radius:6px;
+  padding:0px 4px;
+  background:alpha(@surface,0.5);
+  border:1px solid alpha(@border,0.33);
+}
+
+#tray>.passive{-gtk-icon-effect:dim;}
+#tray>.needs-attention{-gtk-icon-effect:highlight;}
+
+#tray menu{
+  border-radius:8px;
+  color:@text;
+  background-color:@surface_container;
+  padding:4px;
+}
+
+/*===============================================================
+=> Clock
+================================================================*/
+#clock{padding:0px 8px;}
+
+/*===============================================================
+=> Notifications
+================================================================*/
+#custom-notifications{
+  font-size:13px;
+  margin-right:0px;
+  border-radius:6px 0px 0px 6px;
+  border-right:none;
+  padding:0px 11px 0px 8px;
+}
+
+/*===============================================================
+=> Power menu
+================================================================*/
+#custom-power{
+  font-size:13px;
+  margin-right:0px;
+  margin-left:0px;
+  border-radius:0px 6px 6px 0px;
+  padding:0px 12px 0px 8px;
+}
+
+/*===============================================================
+=> Hide empty modules
+================================================================*/
+window#waybar.empty #window,
+#custom-updates.none,
+#taskbar.empty,
+#tray.empty,
+#custom-mediaplayer.empty{
+  border:0px;
+  background-color:transparent;
+  padding:0px;
+  margin:0px;
+}
+
+/*===============================================================
+=> MPRIS Media Control
+================================================================*/
+#mpris{
+  margin:2px 4px;
+  padding:0px 10px;
+  border-radius:6px;
+  background: @surface_container;
+  color:@text;
+  border:1px solid alpha(@border,0.33);
+  font-size:12px;
+  font-weight:bold;
+}
+
+/* state-based styling */
+#mpris.playing{
+  color:@text;
+}
+
+#mpris.paused{
+  color:alpha(@text,0.6);
+}
+
+#mpris.stopped{
+  color:alpha(@text,0.4);
+}
+
+/* optional: hover feedback */
+#mpris:hover{
+  color:@hover;
+}
+
+/*===============================================================
+=> Per-player styling (Spotify, VLC, etc.)
+================================================================*/
+
+/* Spotify */
+#mpris.spotify{
+  border:1px solid alpha(@primary,0.4);
+}
+
+#mpris.spotify.playing{
+  color:@primary;
+}
+
+/* VLC */
+#mpris.vlc{
+  border:1px solid alpha(@tertiary,0.4);
+}
+
+#mpris.vlc.playing{
+  color:@tertiary;
+}
+
+/* Firefox media sessions */
+#mpris.firefox{
+  border:1px solid alpha(@text,0.25);
+}
+
+/* fallback generic player styling */
+#mpris.default{
+  opacity:0.9;
+}
