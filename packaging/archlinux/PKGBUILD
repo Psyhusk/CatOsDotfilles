@@ -1,0 +1,89 @@
+# Maintainer: Psyhusk <https://github.com/Psyhusk>
+pkgname=catdotsos
+pkgver=0.0.3.alpha
+pkgrel=1
+pkgdesc="A Dark, Glitch-Aesthetic, Feature-Rich Hyprland Dotfiles Setup"
+arch=('x86_64')
+url="https://github.com/Psyhusk/CatDotsOS"
+license=('GPL3')
+depends=(
+    'python>=3.11'
+    'python-gobject'
+    'python-psutil'
+    'python-requests'
+    'python-rich'
+    'python-typer'
+    'python-pexpect'
+    'python-setproctitle'
+    'python-pyfiglet'
+    'hyprland'
+    'waybar'
+    'rofi-wayland'
+    'swaync'
+    'kitty'
+    'fish'
+    'atuin'
+    'btop'
+    'cava'
+    'fastfetch'
+    'waypaper'
+    'wlogout'
+    'matugen'
+    'hyprlock'
+    'hypridle'
+)
+makedepends=(
+    'git'
+    'gcc'
+    'python-setuptools'
+    'python-build'
+    'python-installer'
+    'python-wheel'
+)
+source=("catdotsos::git+https://github.com/Psyhusk/CatDotsOS.git")
+sha256sums=('SKIP')
+
+build() {
+    cd "$srcdir/catdotsos"
+
+    # Compile C++ actions client (pure stdlib + POSIX, no extra libs needed)
+    g++ -std=c++17 -O2 -Wall \
+        -o catdots-actions \
+        bin/catdots-actions.cpp
+
+    # Build Python wheel
+    python -m build --wheel --no-isolation
+}
+
+package() {
+    cd "$srcdir/catdotsos"
+
+    # Install Python package
+    python -m installer --destdir="$pkgdir" dist/*.whl
+
+    # Install C++ binary
+    install -Dm755 catdots-actions "$pkgdir/usr/bin/catdots-actions"
+
+    # Install set_power_profile helper script
+    install -Dm755 bin/set_power_profile "$pkgdir/usr/lib/catdots/set_power_profile"
+
+    # Install dotfiles to /usr/share/catdots
+    install -dm755 "$pkgdir/usr/share/catdots"
+    cp -r dotfiles/configs  "$pkgdir/usr/share/catdots/"
+    cp -r dotfiles/wallpapers "$pkgdir/usr/share/catdots/"
+    install -Dm644 dotfiles/avatar.png "$pkgdir/usr/share/catdots/avatar.png"
+
+    # Install systemd user services
+    install -Dm644 services/catdots-actions.service \
+        "$pkgdir/usr/lib/systemd/user/catdots-actions.service"
+    install -Dm644 services/catdots-clipboard-listener.service \
+        "$pkgdir/usr/lib/systemd/user/catdots-clipboard-listener.service"
+
+    # Install default rich theme
+    install -Dm644 defaults/rich_theme.toml \
+        "$pkgdir/etc/catdots/rich_theme.toml"
+
+    # License
+    install -Dm644 LICENSE.md \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
