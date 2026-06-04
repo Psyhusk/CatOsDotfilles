@@ -3,21 +3,6 @@
   <p>A Dark, Glitch-Aesthetic, Feature-Rich Hyprland Setup</p>
 </div>
 
-<div align="center">
-  <a href="https://github.com/Psyhusk/CatDotsOS/issues">
-    <img src="https://img.shields.io/github/issues/catuser/catdots?&style=for-the-badge&color=eba0ac" alt="Issues">
-  </a>
-  <a href="https://github.com/Psyhusk/CatDotsOS/stargazers">
-    <img src="https://img.shields.io/github/stars/catuser/catdots?style=for-the-badge&labelColor=313244&color=f9e2af" alt="Stars">
-  </a>
-  <a href="https://github.com/Psyhusk/CatDotsOS/blob/main">
-    <img src="https://img.shields.io/github/repo-size/catuser/catdots?style=for-the-badge&labelColor=313244&color=cba6f7" alt="Repo-Size">
-  </a>
-  <a href="https://github.com/Psyhusk/CatDotsOS/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/catuser/catdots?style=for-the-badge&labelColor=313244&color=74c7ec" alt="License">
-  </a>
-</div>
-
 <br>
 
 Welcome to **CatOsDotfilles**, a dark glitch-aesthetic, feature-rich desktop setup for [Hyprland](https://github.com/hyprwm/Hyprland) written primarily in Python.
